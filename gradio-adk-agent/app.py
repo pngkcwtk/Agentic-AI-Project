@@ -1,9 +1,9 @@
 """
 Gradio UI for the Business Intelligence Agent Pipeline.
-Stable Version:
-- No asyncio.run()
-- Safe formatted_data handling
-- No crash if structured output missing
+Improved Stable Version:
+- Clear resets everything properly
+- Technical Insight not duplicated
+- Structured Data always renders safely
 """
 
 import gradio as gr
@@ -16,13 +16,10 @@ from dotenv import load_dotenv
 from google.genai import types
 from bi_agent import root_runner
 
-
-# ✅ Fix Windows Python 3.12 async shutdown issue
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-
 # =============================================================================
-# 1. Environment
+# Environment
 # =============================================================================
 
 if os.path.exists('.env'):
@@ -32,7 +29,7 @@ else:
 
 
 # =============================================================================
-# 2. Backend Pipeline
+# Backend
 # =============================================================================
 
 async def run_bi_pipeline_async(user_question: str):
@@ -70,6 +67,10 @@ async def run_bi_pipeline_async(user_question: str):
 
     return results
 
+
+# =============================================================================
+# Processing
+# =============================================================================
 
 async def process_request(message: str):
 
@@ -129,6 +130,10 @@ async def process_request(message: str):
             except Exception:
                 df = pd.DataFrame()
 
+        # 🔥 IMPORTANT: Ensure Structured View always shows something
+        if df.empty:
+            df = pd.DataFrame({"Info": ["No structured data returned"]})
+
         # ================= Chart Code =================
         chart = None
         chart_code_raw = parsed_json.get("chart_code", "")
@@ -143,7 +148,7 @@ async def process_request(message: str):
             except Exception:
                 chart = None
 
-        # ================= Summary =================
+        # ================= Summary Split =================
         full_summary = parsed_json.get("executive_summary", "")
 
         if not full_summary and isinstance(raw_output, str):
@@ -152,9 +157,19 @@ async def process_request(message: str):
         if not full_summary:
             full_summary = "Analysis completed."
 
-        short_summary = "\n".join(full_summary.split("\n")[:3])
-        if len(full_summary.split("\n")) > 3:
+        lines = full_summary.split("\n")
+
+        # Business Summary (Top 3 lines)
+        short_summary = "\n".join(lines[:3])
+
+        if len(lines) > 3:
             short_summary += "\n\n👉 Click 'View Technical Insights' to expand."
+
+        # Technical Insight (Remaining lines ONLY)
+        technical_only = "\n".join(lines[3:]).strip()
+
+        if not technical_only:
+            technical_only = "No additional technical breakdown available."
 
         return (
             python_code_out,
@@ -162,13 +177,13 @@ async def process_request(message: str):
             chart,
             short_summary,
             "Analysis completed successfully.",
-            full_summary
+            technical_only
         )
 
     except Exception as e:
         return (
             "",
-            pd.DataFrame(),
+            pd.DataFrame({"Error": [str(e)]}),
             None,
             "⚠️ Agent completed but no structured data was returned.",
             str(e),
@@ -176,21 +191,25 @@ async def process_request(message: str):
         )
 
 
+# =============================================================================
+# Clear (REAL RESET)
+# =============================================================================
+
 def clear_all():
     return (
-        "",
-        "",
-        pd.DataFrame(),
-        None,
+        "",                         # user_input
+        "",                         # sql_out
+        pd.DataFrame(),             # data_out
+        None,                       # chart_out
         "### 🔍 Waiting for query...",
-        "",
-        "",
-        gr.Accordion(open=False)
+        "",                         # status_log
+        "",                         # full_summary_state
+        gr.update(open=False)       # close logs accordion
     )
 
 
 # =============================================================================
-# 3. UI
+# UI
 # =============================================================================
 
 with gr.Blocks(fill_width=True) as demo:
@@ -270,4 +289,3 @@ with gr.Blocks(fill_width=True) as demo:
 
 if __name__ == "__main__":
     demo.launch(theme=gr.themes.Soft())
-    
