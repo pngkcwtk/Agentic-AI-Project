@@ -1,4 +1,4 @@
-# Google's Agent Development Kit (ADK) with Gradio web interface.
+# Google's Agent Development Kit (ADK) with Gradio web interface
 ![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
 ![uv](https://img.shields.io/badge/uv-managed-430f8e.svg?style=flat&logo=python&logoColor=white)
 ![Gradio Version](https://img.shields.io/badge/gradio-6.1.0-orange.svg)
