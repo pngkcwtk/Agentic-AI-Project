@@ -23,7 +23,7 @@
    Navigate into the project directory:
 
   ```bash
-   cd gradio-adk-agent
+      cd gradio-adk-agent
   ```
 
 2. **Install dependencies** (also creates the virtual environment)
