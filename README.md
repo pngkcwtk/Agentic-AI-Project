@@ -1,3 +1,8 @@
+## Management Information System Project
+
+## Context
+- The system converts natural language questions into SQL queries, executes them against Microsoft SQL Server, and automatically generates visualizations and explanations using Google's Gemini AI.
+
 ## Prerequisites
 
 - [uv](https://github.com/kirenz/uv-setup) installed (manages dependencies and virtual environment)
