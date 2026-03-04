@@ -3,3 +3,6 @@
 
 #uv sync
 .venv
+
+# cache
+__pycache__/
