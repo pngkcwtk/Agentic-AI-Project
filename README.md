@@ -8,7 +8,7 @@
 1. **Clone or download the repository**
 
    ```bash
-   git clone https://github.com/kirenz/gradio-adk-intro
+   git clone https://github.com/ChronicleOfZealvy/Agentic_AI_Project.git
    ```
 
    Navigate into the project directory:
