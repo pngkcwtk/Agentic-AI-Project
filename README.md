@@ -1,4 +1,8 @@
-## Management Information System Project
+# Management Information System Project
+![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
+![uv](https://img.shields.io/badge/uv-managed-430f8e.svg?style=flat&logo=python&logoColor=white)
+![Gradio Version](https://img.shields.io/badge/gradio-6.1.0-orange.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## Context
 - The system converts natural language questions into SQL queries, executes them against Microsoft SQL Server, and automatically generates visualizations and explanations using Google's Gemini AI.
