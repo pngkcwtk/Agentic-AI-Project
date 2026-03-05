@@ -91,7 +91,8 @@ Before running the project, ensure the following are installed:
 
 ```bash
 git clone https://github.com/ChronicleOfZealvy/Agentic_AI_Project.git
-cd Agentic_AI_Project/gradio-adk-agent
+cd Agentic_AI_Project
+cd gradio-adk-agent
 ```
 
 ---
