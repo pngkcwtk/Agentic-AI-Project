@@ -111,10 +111,10 @@ This installs all project dependencies and creates a reproducible environment.
 
 An environment variable template is provided in the `bi_agent` directory.
 
-Rename the template file:
+Copy or rename the template file:
 
-```bash
-mv bi_agent/.env.example bi_agent/.env
+```
+bi_agent/.env.example → bi_agent/.env
 ```
 
 Then open the `.env` file and update the values with your credentials.
