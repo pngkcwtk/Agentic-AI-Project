@@ -80,6 +80,7 @@ gradio-adk-agent/
 
 ```bash
 git clone https://github.com/ChronicleOfZealvy/Agentic_AI_Project.git
+cd Agentic_AI_Project
 cd gradio-adk-agent
 ```
 
