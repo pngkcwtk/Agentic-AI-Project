@@ -154,3 +154,8 @@ Both interfaces use the same agent pipeline.
 - AI-powered analytical explanations
 - Dual interface support (ADK + Gradio)
 - Reproducible Python environment using **uv**
+
+For system architecture, prompting strategy, and evaluation details, please refer to:
+
+**Short Technical Report:**  
+`Short Technical Report.md`
