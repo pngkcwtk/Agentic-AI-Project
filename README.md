@@ -1,73 +1,198 @@
-# Google's Agent Development Kit (ADK) with Gradio web interface
+# Google's Agent Development Kit (ADK) BI Agent with Gradio
+
 ![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
 ![uv](https://img.shields.io/badge/uv-managed-430f8e.svg?style=flat&logo=python&logoColor=white)
 ![Gradio Version](https://img.shields.io/badge/gradio-6.1.0-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
+---
+
 ## Context
-- The system converts natural language questions into SQL queries, executes them against Microsoft SQL Server, and automatically generates visualizations and explanations using Google's Gemini AI.
+
+This project demonstrates how to build a **sequential agent pipeline** using Google's Agent Development Kit (ADK).
+
+The system:
+
+1. Converts natural language questions into SQL queries  
+2. Executes queries against Microsoft SQL Server  
+3. Generates visualizations  
+4. Produces AI-powered explanations using Google Gemini  
+
+It can be accessed through:
+
+- ADK Web interface  
+- Gradio Web interface  
+
+---
+
+## Architecture Overview
+
+The system follows a sequential agent pipeline design:
+
+```
+User Query
+   ↓
+NL → SQL Agent (Gemini)
+   ↓
+SQL Executor
+   ↓
+Business Intelligence Service
+   ↓
+Visualization + Explanation
+```
+
+### Key Design Principles
+
+- Modular agent design  
+- Separation of concerns  
+- Reusable tools  
+- Configurable environment  
+- Reproducible setup with uv  
+
+---
+
+## Project Structure
+
+The project follows the ADK directory structure:
+
+```
+gradio-adk-agent/
+├── bi_agent/              # Agent package
+│   ├── __init__.py
+│   ├── agent.py           # Main agent definitions
+│   ├── tools.py           # Custom tool definitions
+│   ├── bi_service.py      # Business Intelligence service layer
+│   ├── db_config.py       # Database configuration
+│   ├── sql_executor.py    # SQL execution utilities
+│   └── .env               # API keys and credentials (not committed)
+├── app.py                 # Gradio web interface
+├── pyproject.toml         # Project dependencies
+└── README.md
+```
+
+---
 
 ## Prerequisites
 
-- [uv](https://github.com/kirenz/uv-setup) installed (manages dependencies and virtual environment)
-- A Google API key from [Google AI Studio](https://aistudio.google.com/api-keys)
+- Python 3.12  
+- uv (Python package & environment manager)  
+- Google API key from Google AI Studio  
+- Microsoft SQL Server access  
+
+---
 
 ## Setup
 
-1. **Clone or download the repository**
+### 1. Clone the repository
 
-   ```bash
-   git clone https://github.com/ChronicleOfZealvy/Agentic_AI_Project.git
-   ```
+```bash
+git clone https://github.com/ChronicleOfZealvy/Agentic_AI_Project.git
+cd gradio-adk-agent
+```
 
-   Navigate into the project directory:
+### 2. Install dependencies
 
-     ```bash
-     cd gradio-adk-agent
-     ```
+```bash
+uv sync
+```
 
-2. **Install dependencies** (also creates the virtual environment)
+This will create a virtual environment and install all dependencies.
 
-   ```bash
-   uv sync
-   ```
+---
 
-3. **Get your API key** (free) from [Google AI Studio](https://aistudio.google.com/api-keys)
+### 3. Configure Environment Variables
 
+Rename `.example.env` to `.env` inside the `bi_agent` folder and fill in:
 
-4. **Configure Environment**
+```
+# Google API Key
+GOOGLE_API_KEY=your_gemini_api_key_here
 
-   Go to folder bi_agent and rename `.example.env` to `.env` and fill in your credentials:
+# SQL Server Configuration
+MSSQL_SERVER=your_server_address
+MSSQL_DATABASE=your_database_name
+MSSQL_USERNAME=your_username
+MSSQL_PASSWORD=your_password
+```
 
-   ```bash
-   # Google API Key
-   GOOGLE_API_KEY=your_gemini_api_key_here
-   
-   # SQL Server Configuration
-   MSSQL_SERVER=your_server_address
-   MSSQL_DATABASE=your_database_name
-   MSSQL_USERNAME=your_username
-   MSSQL_PASSWORD=your_password
-   ```
+The `.env` file is excluded via `.gitignore` to protect credentials.
 
-**Important**: The `.env` file is already listed in `.gitignore` and will **not** be committed to the repository, keeping your key private.
+---
 
-## Running the Application
+## Running the Project
 
-### Option 1: Run with Gradio (Web UI)
+### Option 1: ADK Web Interface
 
-Start the Time Agent application with Gradio interface:
+```bash
+uv run adk web . --port 8000
+```
+
+Open:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+### Option 2: Gradio Interface
 
 ```bash
 uv run app.py
 ```
 
-### Option 2: Run with ADK Web
+Open:
 
-From the root directory, run with ADK web:
-
-```bash
-uv run adk web
+```
+http://127.0.0.1:7860
 ```
 
-This will start the ADK web interface where you can interact with the agent. 
+---
+
+## Python Management with uv
+
+Add new dependencies:
+
+```bash
+uv add <package-name>
+```
+
+Run project:
+
+```bash
+uv run
+```
+
+---
+
+## Features
+
+- Natural language to SQL conversion  
+- Secure SQL execution layer  
+- Business Intelligence service abstraction  
+- Automated visualization generation  
+- AI-generated analytical explanations  
+- Dual interface support (ADK + Gradio)  
+- Reproducible environment with uv  
+
+---
+
+## Summary
+
+This project demonstrates:
+
+- Agent-based system design  
+- Sequential pipeline architecture  
+- LLM tool integration  
+- Database connectivity  
+- Web UI deployment  
+- Clean modular structure  
+
+Suitable for:
+
+- AI Engineering coursework  
+- Business Intelligence system demonstrations  
+- Portfolio projects  
+- Agentic system experimentation  
+
+---
