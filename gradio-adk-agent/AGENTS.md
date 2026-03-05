@@ -1,8 +1,12 @@
 ## Context
 
-This is a project that demonstrates how to build a sequential agent pipeline using Google's Agent Development Kit (ADK) with Gradio web interface.
+This project demonstrates how to build a **sequential agent pipeline** using **Google's Agent Development Kit (ADK)** with a **Gradio web interface**.
 
-The project can be run with `uv run adk web .` (ADK web interface) as well as `uv run app.py` (Gradio interface). Both should be run from the project root directory.
+The system converts natural language questions into SQL queries, executes them on a database, and returns analytical results with visualizations and explanations.
+
+The project can be run using either the **ADK web interface** or the **Gradio interface**. Both commands should be executed from the **`gradio-adk-agent` directory**.
+
+---
 
 ## Agent Architecture
 
@@ -10,14 +14,18 @@ The system is implemented using a **sequential agent orchestration design**.
 
 The main components are:
 
-- **Root Agent** – orchestrates the workflow and delegates tasks.
-- **BI Unified Agent** – generates SQL queries using schema information.
-- **Insight Agent** – produces visualizations and analytical explanations.
+* **Root Agent** – orchestrates the workflow and delegates tasks.
+* **BI Unified Agent** – generates SQL queries using schema information.
+* **Insight Agent** – produces visualizations and analytical explanations.
 
 The BI agent interacts with the database using two controlled tools:
 
-- `get_database_schema`
-- `execute_sql_and_format`
+* `get_database_schema`
+* `execute_sql_and_format`
+
+This design separates orchestration, SQL generation, and analytical interpretation into modular components.
+
+---
 
 ## Project Structure
 
@@ -48,7 +56,15 @@ The repository structure is organized as follows:
 └── Short Technical Report.md
 ```
 
+---
+
 ## Running the Project
+
+Navigate to the project directory:
+
+```bash
+cd gradio-adk-agent
+```
 
 ### Option 1: ADK Web Interface
 
@@ -56,7 +72,11 @@ The repository structure is organized as follows:
 uv run adk web . --port 8000
 ```
 
-This launches the ADK web interface at http://127.0.0.1:8000
+This launches the ADK web interface at:
+
+```
+http://127.0.0.1:8000
+```
 
 ### Option 2: Gradio Interface
 
@@ -64,21 +84,26 @@ This launches the ADK web interface at http://127.0.0.1:8000
 uv run app.py
 ```
 
-This launches the Gradio interface at http://127.0.0.1:7860
+This launches the Gradio interface at:
 
-## Python management with uv
+```
+http://127.0.0.1:7860
+```
 
-The project is managed with uv. 
+---
 
-To add packages, use the command:
+## Python Management with uv
+
+The project environment is managed using **uv**.
+
+To add a package:
 
 ```
 uv add <package-name>
 ```
 
-To run the project, use the command:
+To run Python commands within the environment:
 
 ```
-uv run
+uv run <command>
 ```
-
