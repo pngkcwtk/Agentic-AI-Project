@@ -4,6 +4,21 @@ This is a project that demonstrates how to build a sequential agent pipeline usi
 
 The project can be run with `uv run adk web .` (ADK web interface) as well as `uv run app.py` (Gradio interface). Both should be run from the project root directory.
 
+## Agent Architecture
+
+The system is implemented using a **sequential agent orchestration design**.
+
+The main components are:
+
+- **Root Agent** – orchestrates the workflow and delegates tasks.
+- **BI Unified Agent** – generates SQL queries using schema information.
+- **Insight Agent** – produces visualizations and analytical explanations.
+
+The BI agent interacts with the database using two controlled tools:
+
+- `get_database_schema`
+- `execute_sql_and_format`
+
 ## Project Structure
 
 The project follows the ADK web directory structure:
