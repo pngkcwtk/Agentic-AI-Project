@@ -16,7 +16,10 @@ from dotenv import load_dotenv
 from google.genai import types
 from bi_agent import root_runner
 
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+import platform
+
+if platform.system() == "Windows":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 # =============================================================================
 # Environment
@@ -227,7 +230,7 @@ button.secondary:hover, .gr-button:not(.btn-primary):hover { background-color: #
 }
 """
 
-with gr.Blocks(fill_width=True, css=custom_css) as demo:
+with gr.Blocks(title="Agentic AI for Business Intelligence", fill_width=True, css=custom_css) as demo:
 
     gr.Markdown("# 🤖 Intelligent SQL Agent & Analytics")
 
