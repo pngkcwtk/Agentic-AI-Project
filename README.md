@@ -109,7 +109,15 @@ This installs all project dependencies and creates a reproducible environment.
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file inside the `bi_agent` directory.
+An environment variable template is provided in the `bi_agent` directory.
+
+Rename the template file:
+
+```bash
+mv bi_agent/.env.example bi_agent/.env
+```
+
+Then open the `.env` file and update the values with your credentials.
 
 Example configuration:
 
@@ -122,7 +130,7 @@ MSSQL_USERNAME=your_username
 MSSQL_PASSWORD=your_password
 ```
 
-The `.env` file is excluded from version control to protect credentials.
+The `.env` file is excluded from version control to protect sensitive credentials.
 
 ---
 
