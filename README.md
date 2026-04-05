@@ -381,8 +381,8 @@ It covers:
 |-------|------|
 | 👤 **System Architect** | [@pngkcwtk](https://github.com/pngkcwtk) |
 | 👤 **AI Logic** | [@Varanapat](https://github.com/Varanapat) & [@Patchara](https://github.com/PatcharaPongvech) |
-| 👤 **UX/UI Designer** | [@jxxnvi8](https://github.com/jxxnvi8) & [@Thanist] |
-| 👤 **Research Assistant** | [waanwara](https://github.com/waanwara) & [@Cake]|
+| 👤 **UX/UI Designer** | [@jxxnvi8](https://github.com/jxxnvi8) & [@Thanist](https://github.com/TanistM) |
+| 👤 **Research Assistant** | [@waanwara](https://github.com/waanwara) & [@Bussayamas]|
 | 🎓 **Course** | Management Information System — DSBA 2/2 |
 | 🔗 **Repository** | [Agentic-AI-Project](https://github.com/pngkcwtk/Agentic-AI-Project) |
 | 🤖 **Powered By** | Google ADK + Google Gemini |
