@@ -1,4 +1,4 @@
-# 🤖 Agentic AI for Business Intelligence
+# 🤖 Agentic AI for Business Intelligencee
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Google ADK](https://img.shields.io/badge/Google%20ADK-Agent%20Dev%20Kit-4285F4?style=for-the-badge&logo=google&logoColor=white)
